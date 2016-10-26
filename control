@@ -1,0 +1,10 @@
+Package: com.rainyx.rxmemscan
+Name: rxmemscan
+Depends: 
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome tool of some sort!!
+Maintainer: rainyx
+Author: rainyx
+Section: System
+Tag: role::hacker
