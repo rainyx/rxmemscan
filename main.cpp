@@ -177,17 +177,27 @@ int tmain(int argc, char **argv, char **envp) {
     rx_search_value_type *value_type = new rx_search_typed_value_type<T>();
     g_engine->set_search_value_type(value_type);
 
+    std::string last_line;
     while (true) {
 
         std::string str_line = _readline_str(tty_prefix);
-        add_history(str_line.c_str());
+        if (str_line != last_line) {
+            add_history(str_line.c_str());
+        }
+        last_line = str_line;
+
         std::vector<std::string> args = explode(str_line, ' ');
         std::string command = args[0];
 
         if (command == "exit") {
             break;
-        } else if (command == "") {
-
+        } else if (command == "retype") {
+            if (ask("Are you sure?")) {
+                printf("Re-select the search value type.\n");
+                return 1;
+            } else {
+                continue;
+            }
         } else if (command == "search" || command == "s") {
             if (_checkarg(1, args, "search value")) {
                 printf("Begin search...\n");
@@ -317,6 +327,7 @@ int main(int argc, char **argv, char **envp) {
     }
 
     while (true) {
+        g_engine->reset();
 
         printf("Type [x] to select search value type.\n");
         for (int i = 0; i< _vtcount; ++i) {
