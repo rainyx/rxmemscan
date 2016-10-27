@@ -3,7 +3,6 @@ Requirments
  - [theos](https://github.com/theos/theos)
  - readline
 
-----------
 
 Make & Install
 -------------
@@ -11,7 +10,6 @@ Make & Install
     $ cd rxmemscan
     $ make do FINALPACKAGE=1
 
-----------
 
 Usage
 -------------
