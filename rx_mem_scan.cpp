@@ -4,6 +4,7 @@
 //
 
 #include "rx_mem_scan.h"
+#include "lz4/lz4.h"
 
 static long get_timestamp() {
     struct timeval tv;
@@ -237,7 +238,7 @@ search_result_t rx_mem_scan::search(search_val_pt search_val_p, rx_compare_type 
 
         if (ret == KERN_SUCCESS) {
 
-            matched_offs_pt matched_idxes_p = new matched_offs_t;
+            matched_offs_pt matched_offs_p = new matched_offs_t;
 
             data_pt data_itor_p = region_data_p;
             uint32_t matched_count = 0;
@@ -248,14 +249,14 @@ search_result_t rx_mem_scan::search(search_val_pt search_val_p, rx_compare_type 
             if (_idle) {
                 if (is_fuzzy_search) {
                     matched_count = data_count;
-                    add_matched_offs_multi(*matched_idxes_p, 0, data_count);
+                    add_matched_offs_multi(*matched_offs_p, 0, data_count);
                 } else {
                     matched_off_t idx = 0;
                     data_pt end_p = (region_data_p + region.size);
                     while (data_itor_p < end_p) {
                         if (comparator->compare(search_val_p, data_itor_p)) {
                             ++ matched_count;
-                            add_matched_off(idx, matched_offs_context, *matched_idxes_p);
+                            add_matched_off(idx, matched_offs_context, *matched_offs_p);
                         }
                         data_itor_p += size_of_value;
                         idx += size_of_value;
@@ -291,7 +292,7 @@ search_result_t rx_mem_scan::search(search_val_pt search_val_p, rx_compare_type 
                         }
 
                         if (comparator->compare(search_val_p, data_itor_p)) {
-                            add_matched_off(old_matched_off, matched_offs_context, *matched_idxes_p);
+                            add_matched_off(old_matched_off, matched_offs_context, *matched_offs_p);
                             matched_count ++;
                         }
 
@@ -322,8 +323,8 @@ search_result_t rx_mem_scan::search(search_val_pt search_val_p, rx_compare_type 
                     delete[] compressed_data;
                 }
 
-                matched_offs_flush(matched_offs_context, *matched_idxes_p);
-                region.matched_offs = matched_idxes_p;
+                matched_offs_flush(matched_offs_context, *matched_offs_p);
+                region.matched_offs = matched_offs_p;
                 region.matched_count = matched_count;
 
                 result.memory_used += region.cal_memory_used();

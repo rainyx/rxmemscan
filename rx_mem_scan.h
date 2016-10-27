@@ -11,7 +11,6 @@
 #include <memory>
 #include <string>
 #include <vector>
-#include "lz4.h"
 
 // #define RXDEBUG
 
