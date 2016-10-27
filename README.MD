@@ -16,11 +16,11 @@ Make & Install
 Usage
 -------------
     
- | Command | Short | Args          | Desc                                                        |
-|---------|-------|---------------|-------------------------------------------------------------|                                       |
+| Command | Short | Args          | Desc                                                        |
+|---------|-------|---------------|-------------------------------------------------------------|
+| list    | l     | [pageNo]      | List search results.                                        |
 | search  | s     | [searchVal]   | First search & Search again with [searchVal].               |
-| fuzzy    | f     | [compareType] | First fuzzy search & Fuzzy search again with [compareType]. |
-| list    | l     | [pageNo]      | List search results. 
-| reset   | r     | -             | Reset the search engine state.                                     |
+| fuzy    | f     | [compareType] | First fuzzy search & Fuzzy search again with [compareType]. |
+| reset   | r     | -             | Reset the search state.                                     |
 | retype  | -     | -             | Re-select the search value type.                            |
 | exit    | -     | -             | Exit the program.                                           |
