@@ -1,4 +1,4 @@
-Requirments
+Requirements
 ===================
  - [theos](https://github.com/theos/theos)
  - readline
