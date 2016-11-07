@@ -321,7 +321,7 @@ int main(int argc, char **argv, char **envp) {
     pid_t pid = atoi(argv[1]);
     g_engine = new rx_mem_scan();
 
-    if (g_engine->attach(pid)) {
+    if (!g_engine->attach(pid)) {
         printf("Attach to pid(%d) failed.\n", pid);
         return 0;
     }
@@ -344,7 +344,7 @@ int main(int argc, char **argv, char **envp) {
             printf("Invalid type.\n");
             continue;
         } else {
-            printf("Selected search type %s.\n", _vtdescs[t * 2]);
+            printf("Selected search type: %s.\n", _vtdescs[t * 2]);
         }
 
         int ret_val = 0;

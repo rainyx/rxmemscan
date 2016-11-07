@@ -157,12 +157,16 @@ class rx_search_typed_value_type : public rx_search_value_type {
     }
 };
 
-#define rx_offc_mask                0x80000000
+#ifdef __LP64__
+#   define rx_offc_mask             0x8000000000000000
+#else
+#   define rx_offc_mask             0x80000000
+#endif
 #define rx_add_offc_mask(i)         ((i) | rx_offc_mask)
 #define rx_remove_offc_mask(i)      ((i) & ~rx_offc_mask)
 #define rx_has_offc_mask(i)         (((i) & rx_offc_mask) == rx_offc_mask)
 
-#define rx_search_fuzzy_val NULL
+#define rx_search_fuzzy_val         NULL
 #define rx_is_fuzzy_search_val(_v)  ((_v)==rx_search_fuzzy_val)
 
 #define rx_in_range(v, b, e)        ((v)>=(b) && (v)<(e))

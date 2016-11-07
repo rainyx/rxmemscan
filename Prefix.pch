@@ -13,7 +13,7 @@
 
 #define RX_NAME         "rxmemscan"
 #define RX_VERSION      "1.0.0(Beta)"
-#define RX_COPYRIGHT    "rainyx@gmail.com"
+#define RX_COPYRIGHT    "atrainyx@gmail.com"
 
 #define _rxmemcpy(d, s, c) (memcpy((d), (s), (c)))
 
