@@ -23,3 +23,15 @@ Usage
 | reset   | r     | -             | Reset the search state.                                     |
 | retype  | -     | -             | Re-select the search value type.                            |
 | exit    | -     | -             | Exit the program.                                           |
+
+
+Screenshots
+-------------
+![alt tag](https://raw.githubusercontent.com/rainyx/rxmemscan/master/screenshots/screenshot1.jpg)
+
+
+----------
+
+
+![alt tag](https://raw.githubusercontent.com/rainyx/rxmemscan/master/screenshots/screenshot2.jpg)
+
